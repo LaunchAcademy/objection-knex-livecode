@@ -19,7 +19,7 @@ comicBooksRouter.post("/", async (req, res) => {
 
   try {
     const newComicBook = await ComicBook.query().insertAndFetch(body)
-    return res.status(201).json({ newComicBook })
+    return res.status(200).json({ newComicBook })
   } catch (error) {
     return res.status(500).json({ errors: error })
   }

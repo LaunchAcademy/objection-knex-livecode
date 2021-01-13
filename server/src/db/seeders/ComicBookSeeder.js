@@ -7,20 +7,17 @@ class ComicBookSeeder {
         title: "Batman: Hush",
         publisher: "DC Comics",
         genre: "superhero",
-        firstEdition: false,
         details: "A family reunion of Robins"
       },
       {
         title: "Action Comics #1",
         publisher: "DC Comics",
-        genre: "superhero",
-        firstEdition: true
+        genre: "superhero"
       },
       {
         title: "Locke & Key",
         publisher: "IDW Publishing",
-        genre: "horror",
-        firstEdition: false
+        genre: "horror"
       }
     ]
 

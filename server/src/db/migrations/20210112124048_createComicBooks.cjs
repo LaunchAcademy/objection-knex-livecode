@@ -6,7 +6,7 @@
  * @param {Knex} knex
  */
 exports.up = async (knex) => {
-  return knex.schema.createTable("comic_books", (table) => {
+  return knex.schema.createTable("comicBooks", (table) => {
     table.bigIncrements("id").primary()
     table.string("title").notNullable()
     table.string("publisher").notNullable()
@@ -22,5 +22,5 @@ exports.up = async (knex) => {
  * @param {Knex} knex
  */
 exports.down = async (knex) => {
-  return knex.schema.dropTableIfExists("comic_books")
+  return knex.schema.dropTableIfExists("comicBooks")
 }

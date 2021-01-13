@@ -9,8 +9,7 @@ const NewComicBookForm = (props) => {
     title: "",
     publisher: "",
     genre: "",
-    firstEdition: "",
-    details: "",
+    details: ""
   })
   const [errors, setErrors] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
@@ -18,7 +17,7 @@ const NewComicBookForm = (props) => {
   const handleInputChange = (event) => {
     setNewComicBook({
       ...newComicBook,
-      [event.currentTarget.name]: event.currentTarget.value,
+      [event.currentTarget.name]: event.currentTarget.value
     })
   }
 
@@ -27,9 +26,9 @@ const NewComicBookForm = (props) => {
       const response = await fetch("/api/v1/comic-books", {
         method: "POST",
         headers: new Headers({
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         }),
-        body: JSON.stringify(newComicBook),
+        body: JSON.stringify(newComicBook)
       })
       if (!response.ok) {
         if (response.status == 422) {
@@ -60,8 +59,7 @@ const NewComicBookForm = (props) => {
       title: "",
       publisher: "",
       genre: "",
-      firstEdition: "",
-      details: "",
+      details: ""
     })
     setErrors({})
   }
@@ -95,28 +93,6 @@ const NewComicBookForm = (props) => {
           Genre:
           <input type="text" name="genre" onChange={handleInputChange} value={newComicBook.genre} />
         </label>
-
-        <div>
-          <p>This individual is a vampire:</p>
-          <input
-            type="radio"
-            name="firstEdition"
-            value={true}
-            value="true"
-            checked={newComicBook.firstEdition === "true"}
-            onChange={handleInputChange}
-          />
-          <label>True</label>
-          <input
-            type="radio"
-            name="firstEdition"
-            value={false}
-            value="false"
-            checked={newComicBook.firstEdition === "false"}
-            onChange={handleInputChange}
-          />
-          <label>False</label>
-        </div>
 
         <label>
           Details:

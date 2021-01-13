@@ -18,14 +18,11 @@ comicBooksRouter.get("/", async (req, res) => {
 
 comicBooksRouter.post("/", async (req, res) => {
   const { body } = req
-  console.log(body)
   const formInput = cleanUserInput(body)
-  console.log("formInput")
-  console.log(formInput)
 
   try {
-    const newComicBook = await ComicBook.query().insertAndFetch(formInput)
-    return res.status(201).json({ newComicBook })
+    const newComicBook = await ComicBook.query().insertAndFetch(body)
+    return res.status(200).json({ newComicBook })
   } catch (error) {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data })

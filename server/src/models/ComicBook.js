@@ -1,9 +1,9 @@
 const Model = require("./Model")
 
-class Birthday extends Model {
+class ComicBook extends Model {
   static get tableName() {
-    return "comic_books"
+    return "comicBooks"
   }
 }
 
-module.exports = Birthday
+module.exports = ComicBook

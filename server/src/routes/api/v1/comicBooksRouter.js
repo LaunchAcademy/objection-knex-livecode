@@ -1,7 +1,9 @@
 import express from "express"
-import objection from "objection"
+import objection, { ValidationError } from "objection"
+// const { ValidationError } = objection
 
 import ComicBook from "../../../models/ComicBook.js"
+import cleanUserInput from "../../../services/cleanUserInput.js"
 
 const comicBooksRouter = new express.Router()
 
@@ -16,11 +18,18 @@ comicBooksRouter.get("/", async (req, res) => {
 
 comicBooksRouter.post("/", async (req, res) => {
   const { body } = req
+  const cleanBody = cleanUserInput(body)
 
   try {
-    const newComicBook = await ComicBook.query().insertAndFetch(body)
+    const newComicBook = await ComicBook.query().insertAndFetch(cleanBody)
     return res.status(200).json({ newComicBook })
   } catch (error) {
+    // debugger
+    if (error instanceof ValidationError) {
+      // debugger
+      console.log(error)
+      return res.status(422).json({ errors: error.data })
+    }
     return res.status(500).json({ errors: error })
   }
 })

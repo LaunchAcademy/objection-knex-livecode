@@ -1,7 +1,7 @@
 import express from "express"
 import objection from "objection"
 
-import ComicBook from "../../../models/ComicBook.js"
+import ComicBook from "../../../models/index.js"
 
 const comicBooksRouter = new express.Router()
 
